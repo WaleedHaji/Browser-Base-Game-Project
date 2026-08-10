@@ -27,6 +27,8 @@ The aim of the game is to challenge the user's memory by seeing how far can they
 
 7. I want to see my record/score after losing.
 
+8. I want to play again after losing. Return to main menu button or Try Again button
+
 ## Screenshots
 
 
