@@ -3,14 +3,20 @@ console.log('Remember the Shapes')
 
 /*-------------------------------- Constants --------------------------------*/
 let guessPosition = 0
-const shapeSelections = ['triangle', 'square', 'circle', 'diamond']
 
+const shapeSelections = ['🔺', '🟨', '🟢', '🔷']
+
+let sequence = []
+
+/* (Another way to randomize the sequences) 
 const currentValues = []
-for(let i = 0; i<4; i++){
+    for(let i = 0; i<4; i++){
     currentValues.push(shapeSelections.sort((a,b)=>Math.random()-.5)[0])
-}
-// shapeSelections.sort((a,b)=>Math.random()-.5)
+    }
+shapeSelections.sort((a,b)=>Math.random()-.5)
 console.log(currentValues)
+*/
+
 /*---------------------------- Variables (state) ----------------------------*/
 sqnBlocks = ['', '', '', '']
 
@@ -26,31 +32,67 @@ const allShapeElements = document.querySelectorAll('.shapeBtn')
 
 const startButtonElement = document.querySelector('#startBtn')
 
+const allSequenceBoxEls = document.querySelectorAll('.sqnShapeBox')
+
 
 /*-------------------------------- Functions --------------------------------*/
+// Game Initiation function
 function init (){
 console.log('game start')
 
 
 }
 
-// function generateSequence() {
-//     const sequence = [];
+init()
+// -----------------------------------------------
+// Game Random Sequence Generator
+function generateSequence() {
+    sequence = [];
 
-//     for (let i = 0; i < 4; i++) {
-//         const randomIndex = Math.floor(Math.random() * shapeSelections.length);
-//         sequence.push(shapeSelections[randomIndex]);
-//     }
+    for (let i = 0; i < 4; i++) {
+        const randomIndex = Math.floor(Math.random() * shapeSelections.length);
+        sequence.push(shapeSelections[randomIndex]);
+    }
 
-//     return sequence;
-// }
+    return sequence;
+}
 
-// const sequence = generateSequence();
+// generateSequence();
 // console.log(sequence);
+// ------------------------------------------------
+// Sequence Display Function at start of the round
+function displaySequence (){
+    sequence.forEach(function(shape, index){
+    allSequenceBoxEls[index].textContent = shape})
+}
 
+// displaySequence ()
+
+// ------------------------------------------------
+// Start Round Function (calling the Sequence Generator Function & Display Sequence Function)
+function startRound() {
+    generateSequence();
+    displaySequence();
+
+    setTimeout(function() {
+        hideSequence();
+    }, 3000);
+}
+
+function hideSequence() {
+    allSequenceBoxEls.forEach(function(box) {
+        box.textContent = '';
+    });
+}
+
+startRound()
+console.log(sequence)
+// ------------------------------------------------
 function render (){
 
 }
+// ------------------------------------------------
+
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -59,4 +101,4 @@ for(let oneShapeElement of allShapeElements){
     oneShapeElement.addEventListener('click', handleClick)
 }
 
-init()
+
