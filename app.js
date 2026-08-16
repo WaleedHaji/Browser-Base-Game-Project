@@ -8,6 +8,8 @@ const shapeSelections = ['🔺', '🟨', '🟢', '🔷']
 
 let sequence = []
 
+let guessedSequence = []
+
 /* (Another way to randomize the sequences) 
 const currentValues = []
     for(let i = 0; i<4; i++){
@@ -71,12 +73,17 @@ function displaySequence (){
 // ------------------------------------------------
 // Start Round Function (calling the Sequence Generator Function & Display Sequence Function)
 function startRound() {
+
+    guessPosition = 0;
+    guessedSequence = []
+    
     generateSequence();
     displaySequence();
 
     setTimeout(function() {
         hideSequence();
     }, 3000);
+    
 }
 
 function hideSequence() {
@@ -85,8 +92,37 @@ function hideSequence() {
     });
 }
 
+
+function handleClickShape(event) {
+    if (guessPosition >= 4){
+        return compare();
+    }
+
+    const playerChoice = event.target.textContent;
+
+    guessedSequence.push(playerChoice);
+
+    allSequenceBoxEls[guessPosition].textContent = playerChoice;
+
+    guessPosition++;
+
+    console.log(guessedSequence);
+}
+
+function compare(){
+    
+}
+
 startRound()
 console.log(sequence)
+// ------------------------------------------------
+
+
+// ------------------------------------------------
+
+
+
+
 // ------------------------------------------------
 function render (){
 
@@ -98,7 +134,7 @@ function render (){
 /*----------------------------- Event Listeners -----------------------------*/
 
 for(let oneShapeElement of allShapeElements){
-    oneShapeElement.addEventListener('click', handleClick)
+    oneShapeElement.addEventListener('click', handleClickShape)
 }
 
 
