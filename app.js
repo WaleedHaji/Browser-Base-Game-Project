@@ -94,9 +94,7 @@ function hideSequence() {
 
 
 function handleClickShape(event) {
-    if (guessPosition >= 4){
-        return compare();
-    }
+    
 
     const playerChoice = event.target.textContent;
 
@@ -107,10 +105,24 @@ function handleClickShape(event) {
     guessPosition++;
 
     console.log(guessedSequence);
+
+    if (guessedSequence.length === 4){
+        return compare();
+    }
 }
 
 function compare(){
+    console.log('comparing')
     
+    if (guessedSequence[0] === sequence[0] &&
+        guessedSequence[1] === sequence[1] &&
+        guessedSequence[2] === sequence[2] &&
+        guessedSequence[3] === sequence[3]) {
+        console.log("win")
+    }
+
+    else  console.log('incorrect');
+
 }
 
 startRound()
