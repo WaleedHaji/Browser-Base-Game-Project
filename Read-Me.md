@@ -30,7 +30,15 @@ The aim of the game is to challenge the user's memory by seeing how far can they
 
 
 ## Screenshots
+![alt text](<Main Menu.png>)
 
+![alt text](<game play random sequence.png>)
+
+![alt text](<game play button click enabled.png>)
+
+![alt text](<game play correct guess.png>)
+
+![alt text](<game play incorrect guess.png>)
 
 ## Future Enhancements
 
@@ -40,3 +48,7 @@ The aim of the game is to challenge the user's memory by seeing how far can they
 
 
 ## Credits
+
+1. w3schools.com
+
+2. developer.mozilla.org
