@@ -2,50 +2,26 @@ console.log('Remember the Shapes')
 
 
 /*-------------------------------- Constants --------------------------------*/
-// const winningMessages = [
-//     'Nicely Done!',
-//     'Keep Going!',
-//     'Big Brain Power!',
-//     'Winning!',
-//     'Now we are cooking!'
-// ];
-
-let guessPosition = 0
 
 const shapeSelections = ['🔺', '🟨', '🟢', '🔷']
 
-let sequence = []
+const highScore = localStorage.getItem('Highest');
 
-let guessedSequence = []
-
-/* (Another way to randomize the sequences) 
-const currentValues = []
-    for(let i = 0; i<4; i++){
-    currentValues.push(shapeSelections.sort((a,b)=>Math.random()-.5)[0])
-    }
-shapeSelections.sort((a,b)=>Math.random()-.5)
-console.log(currentValues)
-*/
 
 /*---------------------------- Variables (state) ----------------------------*/
-sqnBlocks = ['', '', '', '']
-
-userPlay = null
-
-message = null
-
-startCountDown = 3
 
 let level = 1
 
 let score = 0
 
-const highScore = localStorage.getItem('Highest');
+let guessPosition = 0
+
+let sequence = []
+
+let guessedSequence = []
 
 /*------------------------ Cached Element References ------------------------*/
 const allShapeElements = document.querySelectorAll('.shapeBtn')
-
-// const startButtonElement = document.querySelector('#startBtn')
 
 const allSequenceBoxEls = document.querySelectorAll('.sqnShapeBox')
 
@@ -71,11 +47,10 @@ console.log('game start')
     highScoreElement.textContent = `Highest ${highScore}`
     console.log(highScore)
     
-
-
 }
 
 init()
+
 // -----------------------------------------------
 // Game Random Sequence Generator
 function generateSequence() {
@@ -89,8 +64,8 @@ function generateSequence() {
     return sequence;
 }
 
-// generateSequence();
-// console.log(sequence);
+// generateSequence() is called in start round function;
+
 // ------------------------------------------------
 // Sequence Display Function at start of the round
 function displaySequence (){
@@ -98,7 +73,7 @@ function displaySequence (){
     allSequenceBoxEls[index].textContent = shape})
 }
 
-// displaySequence ()
+// displaySequence () is called in start round function
 
 // ----------------------------------------------------
 // Generate Winning Messages
@@ -118,6 +93,7 @@ function generateWinningMessage() {
 
 // ------------------------------------------------
 // Start Round Function (calling the Sequence Generator Function & Display Sequence Function)
+//                      (setTime out to hide sequence, disable/enable buttons, clicking function)
 function startRound() {
     allShapeElements.forEach((element)=>{
         element.disabled = true
@@ -147,7 +123,6 @@ function hideSequence() {
 
 function handleClickShape(event) {
     
-
     const playerChoice = event.target.textContent;
 
     guessedSequence.push(playerChoice);
@@ -178,8 +153,7 @@ function compare(){
         const highScore = localStorage.getItem('Highest');
 
         score++;
-        // highScoreElement.textContent = `Highest ${score}`;
-
+        
         if (highScore === null || score > highScore){
             highScoreElement.textContent = `Highest ${score}`;
             localStorage.setItem('Highest', score);
@@ -188,6 +162,7 @@ function compare(){
         allSequenceBoxEls.forEach(function(box){
             box.style.backgroundColor = 'lightgreen'
         });
+
         generateWinningMessage()
         const winningMessage = generateWinningMessage();
         messageBoxElement.textContent = winningMessage;
@@ -224,24 +199,8 @@ function compare(){
 }
 
 
-
-
 startRound()
 console.log(sequence)
-// ------------------------------------------------
-
-
-// ------------------------------------------------
-
-
-
-
-// ------------------------------------------------
-function render (){
-
-}
-// ------------------------------------------------
-
 
 
 /*----------------------------- Event Listeners -----------------------------*/
