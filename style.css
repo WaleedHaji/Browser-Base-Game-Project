@@ -22,6 +22,7 @@
     animation-duration: 15s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    margin: 25px;
 }
 
 h1{
@@ -32,6 +33,16 @@ h1{
     display: flex;
     justify-content: center;
     text-align: center;
+}
+
+.instructionsSection{
+    margin: 8px;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: rgb(191, 191, 191);
+    width: 400px;
+    background-color: rgb(9, 9, 9);
+    gap: 0.5px;
 }
 
 .instructions{
