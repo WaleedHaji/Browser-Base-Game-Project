@@ -40,6 +40,8 @@ let level = 1
 
 let score = 0
 
+const highScore = localStorage.getItem('Highest');
+
 /*------------------------ Cached Element References ------------------------*/
 const allShapeElements = document.querySelectorAll('.shapeBtn')
 
@@ -58,6 +60,17 @@ const messageBoxElement = document.querySelector('#messageBox')
 // Game Initiation function
 function init (){
 console.log('game start')
+
+    const highScore = localStorage.getItem('Highest');
+    
+    if(highScore === null) {
+       let highScore = 0
+       
+    }
+
+    highScoreElement.textContent = `Highest ${highScore}`
+    console.log(highScore)
+    
 
 
 }
@@ -109,7 +122,7 @@ function startRound() {
     allShapeElements.forEach((element)=>{
         element.disabled = true
     })
-
+    
     guessPosition = 0;
     guessedSequence = []
     
@@ -119,7 +132,7 @@ function startRound() {
     setTimeout(function() {
         hideSequence();
             allShapeElements.forEach((element)=>{
-        element.disabled = false
+        element.disabled = false;
     })
     }, 3000);
     
@@ -162,16 +175,32 @@ function compare(){
         level++;
         lvlElement.textContent = `Level ${level}`;
 
-        score++;
-        highScoreElement.textContent = `Highest ${score}`;
+        const highScore = localStorage.getItem('Highest');
 
+        score++;
+        // highScoreElement.textContent = `Highest ${score}`;
+
+        if (highScore === null || score > highScore){
+            highScoreElement.textContent = `Highest ${score}`;
+            localStorage.setItem('Highest', score);
+        }
+
+        allSequenceBoxEls.forEach(function(box){
+            box.style.backgroundColor = 'lightgreen'
+        });
         generateWinningMessage()
         const winningMessage = generateWinningMessage();
         messageBoxElement.textContent = winningMessage;
+        
         setTimeout(function() {
-        startRound();
+            messageBoxElement.textContent = '';
+            allSequenceBoxEls.forEach(function(box){
+            box.style.backgroundColor = 'white'
+            });
+         startRound();
             }, 2000);
     }
+    
 
     else {
     console.log('incorrect');
@@ -181,9 +210,21 @@ function compare(){
     allShapeElements.forEach((element) => {
         element.disabled = true;
     });
+
+    allSequenceBoxEls.forEach(function(box){
+            box.style.backgroundColor = 'tomato'
+        });
+    }
+    
+    if (highScore === null || score > highScore){
+            localStorage.setItem('Highest', score);
+        }
+
+        
 }
 
-}
+
+
 
 startRound()
 console.log(sequence)
