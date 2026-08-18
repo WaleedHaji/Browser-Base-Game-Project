@@ -7,16 +7,30 @@
     <link rel="stylesheet" href="./style.css">
     <!-- <script defer src="./app.js"></script> -->
 </head>
-<body>
-    <h1>Remember the Shapes</h1>
-    <p> Use your memory to remember the sequence of shapes which appear to you at the start of each level <br>
-    Place the correct sequence by clicking on the shapes to move on to the next level</p>
+<body id="mainMenu">
+    <h1 class="h1MainMenu">Remember the Shapes</h1>
+    <p class="instructions"> Use your memory to remember the sequence of shapes which appear to you at the start of each level</p>
+    <p class="instructions">Place the correct sequence by clicking on the shapes to move on to the next level</p>
 
     
-    <a href="./Game Page/index.html"><button id="startBtn">Start</button></a>
+    <a href="./Game Page/index.html" class="startSection"><button id="startBtn">Start</button></a>
     
+    <section class="allShapesSection">
+        <div class="shapesMenu">
+            <div id="triangleDiv">
+                <p class="shapes" id="triangle">🔺</p>
+            </div>
 
-    <p>🔺🟨🟢🔷</p>
+            <div id="squareCircle">
+                <p class="shapes" id="square">🟨</p>
+                <p class="shapes" id="circle">🟢</p>
+            </div>
+
+            <div id="diamondDiv">    
+                <p class="shapes" id="diamond">🔷</p>
+            </div>    
+        </div>
+    </section>
 
 </body>
 </html>

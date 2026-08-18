@@ -1,7 +1,99 @@
-h1{
+#mainMenu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(53, 53, 53);
+}
+
+.gameMenu{
+    background-color: rgb(53, 53, 53);
+}
+
+.h1MainMenu{
+    font-family: "Super Adorable", sans-serif;
+    font-weight: normal;
+    font-size: 50px;
     display: flex;
     justify-content: center;
+    text-align: center;
+    color: red;
+    animation-name: colorAnimation;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
+
+h1{
+    color: white;
+    font-family: "Super Adorable", sans-serif;
+    font-weight: normal;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.instructions{
+    color: white;
+    font-family: 'Courier New', Courier, monospace ;
+    font-weight: 250;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.startSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 60.74px;
+}
+
+#startBtn{
+    height: 25px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+
+
+.shapesMenu{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+    width: 107px;
+    animation-name: shapesAnimation;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
+}
+
+#squareCircle{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#triangleDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#diamondDiv {
+   display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
 
 .sqnDisplay{
     display: flex;
@@ -13,6 +105,10 @@ h1{
 .levelAndRecord{
     display: flex;
     justify-content: space-between;
+    color: white;
+    font-family: 'Courier New', Courier, monospace ;
+    font-weight: 250;
+    font-size: normal;
 }
 
 .sqnShapeBox{
@@ -28,4 +124,46 @@ h1{
 .shapeSelect{
     display: flex;
     justify-content: center;
+    gap: 10px;
 }
+
+.shapeBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.returnMainMenu{
+    height: 25px;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+/* --------------------Animation Code--------------------- */
+@keyframes shapesAnimation {
+    from {rotate: 0deg;}
+    to {rotate: 360deg;}
+}
+
+@keyframes colorAnimation {
+  0%   {color: red;}
+  25%  {color: rgb(247, 247, 44);}
+  50%  {color: rgb(0, 249, 0);}
+  100% {color: rgb(0, 162, 255);}
+}
+
+
+
+/* --------------------Fonts------------------------------- */
+
+@font-face {
+    font-family: "Super Adorable";
+    src: url("./font/SuperAdorable-MAvyp.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
